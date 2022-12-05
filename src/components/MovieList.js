@@ -1,0 +1,35 @@
+import React from 'react'
+import { Col, Row } from 'react-bootstrap'
+import Button from "react-bootstrap/Button";
+import ButtonGroup from "react-bootstrap/ButtonGroup";
+import CustomCard from './CustomCard';
+
+export const MovieList = () => {
+  return (
+    <div>
+      <Row>
+        <Col className="d-flex justify-content-between">
+          <ButtonGroup aria-label="Basic example">
+            <Button variant="primary">All</Button>
+            <Button variant="secondary">Comedy</Button>
+            <Button variant="success">Romantic</Button>
+          </ButtonGroup>
+
+          <ButtonGroup aria-label="Basic example">
+            <Button variant="warning">Grid</Button>
+            <Button variant="info">List</Button>
+          </ButtonGroup>
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <CustomCard></CustomCard>
+          <CustomCard></CustomCard>
+          <CustomCard></CustomCard>
+          <CustomCard></CustomCard>
+          <CustomCard></CustomCard>
+        </Col>
+      </Row>
+    </div>
+  );
+}
