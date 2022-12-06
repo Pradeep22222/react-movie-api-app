@@ -22,7 +22,7 @@ export const MovieList = () => {
         </Col>
       </Row>
       <Row>
-        <Col>
+        <Col className="d-flex justify-content-between flex-wrap">
           <CustomCard></CustomCard>
           <CustomCard></CustomCard>
           <CustomCard></CustomCard>
