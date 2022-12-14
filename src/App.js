@@ -8,8 +8,7 @@ import { fetchMovieInfo } from "./helpers/axiosHelpers";
 import { useState } from "react";
 function App() {
   const [movie, setMovie] = useState({});
-  const handleOnSubmit = async(str) => {
-    
+  const handleOnSubmit = async (str) => {
     const result = await fetchMovieInfo(str);
     setMovie(result);
   };
@@ -18,11 +17,10 @@ function App() {
       <Container>
         <SearchForm handleOnSubmit={handleOnSubmit}></SearchForm>
         <div className=" d-flex justify-content-center">
-          <CustomCard></CustomCard>
+          {movie.imdbID && <CustomCard movie={movie}></CustomCard>}
         </div>
-
         <hr />
-        <MovieList></MovieList>
+        <MovieList movie={movie}></MovieList>
       </Container>
     </div>
   );

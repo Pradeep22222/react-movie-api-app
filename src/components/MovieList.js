@@ -4,7 +4,7 @@ import Button from "react-bootstrap/Button";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import CustomCard from './CustomCard';
 
-export const MovieList = () => {
+export const MovieList = ({movie}) => {
   return (
     <div>
       <Row>
@@ -23,7 +23,7 @@ export const MovieList = () => {
       </Row>
       <Row>
         <Col className="d-flex justify-content-between flex-wrap">
-          <CustomCard></CustomCard>
+          <CustomCard movie={movie}></CustomCard>
           <CustomCard></CustomCard>
           <CustomCard></CustomCard>
           <CustomCard></CustomCard>
