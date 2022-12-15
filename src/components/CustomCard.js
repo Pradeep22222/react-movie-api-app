@@ -3,7 +3,6 @@ import Card from "react-bootstrap/Card";
 
 const CustomCard = ({ movie = {} }) => {
   const { Title, Poster, imdbRating } = movie;
-  console.log(movie);
   return (
     <Card style={{ width: "18rem" }} className="mt-3">
       <Card.Img variant="top" src={Poster} />

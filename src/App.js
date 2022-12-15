@@ -12,14 +12,17 @@ function App() {
     const result = await fetchMovieInfo(str);
     setMovie(result);
   };
+  console.log(movie)
   return (
     <div className="wrapper">
       <Container>
         <SearchForm handleOnSubmit={handleOnSubmit}></SearchForm>
         <div className=" d-flex justify-content-center">
-          {movie.imdbID && <CustomCard movie={movie}></CustomCard>||movie.response || <Alert variant="danger" className="mt-3">movie not found</Alert>}
-        </div>
-        {movie.Response==="True"}
+     {
+   (movie.imdbID && 
+              <CustomCard movie={movie}></CustomCard>) || (movie.Response === "False" && <Alert className="mt-3" variant="danger">{movie.Error}</Alert>)      
+ }
+        </div> 
         <hr />
         <MovieList></MovieList>
       </Container>
