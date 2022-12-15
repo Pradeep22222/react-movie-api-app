@@ -1,6 +1,6 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Container } from "react-bootstrap";
+import { Alert, Container } from "react-bootstrap";
 import { SearchForm } from "./components/SearchForm";
 import CustomCard from "./components/CustomCard";
 import { MovieList } from "./components/MovieList";
@@ -17,10 +17,11 @@ function App() {
       <Container>
         <SearchForm handleOnSubmit={handleOnSubmit}></SearchForm>
         <div className=" d-flex justify-content-center">
-          {movie.imdbID && <CustomCard movie={movie}></CustomCard>}
+          {movie.imdbID && <CustomCard movie={movie}></CustomCard>||movie.response || <Alert variant="danger" className="mt-3">movie not found</Alert>}
         </div>
+        {movie.Response==="True"}
         <hr />
-        <MovieList movie={movie}></MovieList>
+        <MovieList></MovieList>
       </Container>
     </div>
   );
