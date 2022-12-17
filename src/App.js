@@ -8,23 +8,35 @@ import { fetchMovieInfo } from "./helpers/axiosHelpers";
 import { useState } from "react";
 function App() {
   const [movie, setMovie] = useState({});
+  const [movieList, setMovieList] = useState([]);
   const handleOnSubmit = async (str) => {
     const result = await fetchMovieInfo(str);
     setMovie(result);
   };
-  console.log(movie)
+  const handleOnMovieSelect = (movie) => {
+    setMovieList([...movieList, movie])
+    setMovie({});
+    console.log(movie)
+ }
   return (
     <div className="wrapper">
       <Container>
         <SearchForm handleOnSubmit={handleOnSubmit}></SearchForm>
         <div className=" d-flex justify-content-center">
-     {
-   (movie.imdbID && 
-              <CustomCard movie={movie}></CustomCard>) || (movie.Response === "False" && <Alert className="mt-3" variant="danger">{movie.Error}</Alert>)      
- }
-        </div> 
+          {(movie.imdbID && (
+            <CustomCard
+              movie={movie}
+              handleOnMovieSelect={handleOnMovieSelect}
+            ></CustomCard>
+          )) ||
+            (movie.Response === "False" && (
+              <Alert className="mt-3" variant="danger">
+                {movie.Error}
+              </Alert>
+            ))}
+        </div>
         <hr />
-        <MovieList></MovieList>
+        <MovieList movieList={movieList}></MovieList>
       </Container>
     </div>
   );
