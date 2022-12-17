@@ -27,6 +27,7 @@ function App() {
             <CustomCard
               movie={movie}
               handleOnMovieSelect={handleOnMovieSelect}
+              inSearchForm={true}
             ></CustomCard>
           )) ||
             (movie.Response === "False" && (

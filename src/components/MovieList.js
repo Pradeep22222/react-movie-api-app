@@ -1,22 +1,22 @@
-import React, { useEffect, useState } from 'react'
-import { Col, Row } from 'react-bootstrap'
+import React, { useEffect, useState } from "react";
+import { Col, Row } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
-import CustomCard from './CustomCard';
+import CustomCard from "./CustomCard";
 
 export const MovieList = ({ movieList }) => {
-  const [displayList, setDisplayList] = useState([])
+  const [displayList, setDisplayList] = useState([]);
   useEffect(() => {
-    setDisplayList(movieList)
-  }, [movieList])
+    setDisplayList(movieList);
+  }, [movieList]);
   const filterMovie = (type) => {
     if (type === "all") {
-      setDisplayList(movieList)
+      setDisplayList(movieList);
       return;
     }
-    const tempArg = movieList.filter((item) => item.type === type)
-    setDisplayList(tempArg)
-  }
+    const tempArg = movieList.filter((item) => item.type === type);
+    setDisplayList(tempArg);
+  };
   return (
     <div>
       <Row>
@@ -54,6 +54,9 @@ export const MovieList = ({ movieList }) => {
           </ButtonGroup>
         </Col>
       </Row>
+      <h6 className="mt-3" >
+        {displayList.length} movies found!
+      </h6>
       <Row>
         <Col className="d-flex justify-content-between flex-wrap">
           {displayList.map((item, index) => {
