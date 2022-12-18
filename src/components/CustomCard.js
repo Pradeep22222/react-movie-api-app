@@ -1,7 +1,12 @@
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 
-const CustomCard = ({ movie = {}, handleOnMovieSelect, inSearchForm }) => {
+const CustomCard = ({
+  movie = {},
+  handleOnMovieSelect,
+  inSearchForm,
+  deleteMovie,
+}) => {
   const { Title, Poster, imdbRating } = movie;
   return (
     <Card style={{ width: "18rem" }} className="mt-3">
@@ -28,8 +33,14 @@ const CustomCard = ({ movie = {}, handleOnMovieSelect, inSearchForm }) => {
           </div>
         ) : (
           <div className="d-grid gap-2">
-            <Button variant="danger" size="lg">
-             Delete Movie
+            <Button
+              variant="danger"
+              size="lg"
+              onClick={() => {
+                deleteMovie(movie.imdbID);
+              }}
+            >
+              Delete Movie
             </Button>
           </div>
         )}

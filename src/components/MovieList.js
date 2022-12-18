@@ -4,7 +4,7 @@ import Button from "react-bootstrap/Button";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import CustomCard from "./CustomCard";
 
-export const MovieList = ({ movieList }) => {
+export const MovieList = ({ movieList, deleteMovie }) => {
   const [displayList, setDisplayList] = useState([]);
   useEffect(() => {
     setDisplayList(movieList);
@@ -54,13 +54,13 @@ export const MovieList = ({ movieList }) => {
           </ButtonGroup>
         </Col>
       </Row>
-      <h6 className="mt-3" >
-        {displayList.length} movies found!
-      </h6>
+      <h6 className="mt-3">{displayList.length} movies found!</h6>
       <Row>
         <Col className="d-flex justify-content-between flex-wrap">
           {displayList.map((item, index) => {
-            return <CustomCard movie={item}></CustomCard>;
+            return (
+              <CustomCard movie={item} deleteMovie={deleteMovie}></CustomCard>
+            );
           })}
         </Col>
       </Row>

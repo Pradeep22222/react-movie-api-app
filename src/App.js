@@ -16,8 +16,15 @@ function App() {
   const handleOnMovieSelect = (movie) => {
     setMovieList([...movieList, movie])
     setMovie({});
-    console.log(movie)
- }
+    
+  }
+  const deleteMovie = (imdbID) => {
+    if(window.confirm("Are you sure you want to delete the movie")){ const filterArray = movieList.filter((item) => {
+      return item.imdbID !== imdbID;
+    });
+    setMovieList(filterArray);}
+   
+  }
   return (
     <div className="wrapper">
       <Container>
@@ -37,7 +44,7 @@ function App() {
             ))}
         </div>
         <hr />
-        <MovieList movieList={movieList}></MovieList>
+        <MovieList movieList={movieList} deleteMovie={deleteMovie}></MovieList>
       </Container>
     </div>
   );
